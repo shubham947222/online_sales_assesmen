@@ -161,12 +161,14 @@ function App() {
                 handleSelectedRadio={handleSelectedRadio}
                 handleDelete={handleDelete}
               />
-              <p className="p-0 m-0">{`${formData?.length} Count`}</p>
+              <div className="d-flex w-100 justify-content-between " style={{}}>
+                <p className="p-0 m-0">{`${formData?.length} Count`}</p>
+                <Button onClick={() => setOpenModal(true)}>
+                  Start Filling
+                </Button>
+              </div>
             </>
           )}
-          <div className="d-flex w-75 justify-content-end my-2" style={{}}>
-            <Button onClick={() => setOpenModal(true)}>Start Filling</Button>
-          </div>
         </div>
       </div>
 
