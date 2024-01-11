@@ -132,17 +132,19 @@ function App() {
           />
         </div>
         <div className="col-md-10">
-          <Preview
-            formData={formData}
-            setFormData={setFormData}
-            handleInput={handleInput}
-            handleLabel={handleLabel}
-            addBox={addBox}
-            handleInputBox={handleInputBox}
-            handleSelectedCheckBox={handleSelectedCheckBox}
-            handleSelectedRadio={handleSelectedRadio}
-            handleDelete={handleDelete}
-          />
+          {formData?.length > 0 && (
+            <Preview
+              formData={formData}
+              setFormData={setFormData}
+              handleInput={handleInput}
+              handleLabel={handleLabel}
+              addBox={addBox}
+              handleInputBox={handleInputBox}
+              handleSelectedCheckBox={handleSelectedCheckBox}
+              handleSelectedRadio={handleSelectedRadio}
+              handleDelete={handleDelete}
+            />
+          )}
         </div>
       </div>
       {formData?.length > 0 && (
