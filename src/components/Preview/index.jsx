@@ -15,7 +15,7 @@ const Preview = ({
   return (
     <div
       className="d-flex flex-column "
-      style={{ height: "400px", overflow: "scroll" }}
+      style={{ height: "600px", overflow: "scroll" }}
     >
       {formData?.map((each, index) => (
         <div
@@ -37,6 +37,7 @@ const Preview = ({
             </div>
             {["number", "text"]?.includes(each?.type) && (
               <Input
+                disabled
                 name={each?.name}
                 type={each?.type}
                 placeholder="Enter Field Value"

@@ -3,6 +3,7 @@ import "./App.css";
 import Preview from "./components/Preview";
 import ApplicationFormOptions from "./components/ApplicationFormOptions";
 import { Button, Input, Modal, Checkbox, Radio, Select } from "antd";
+import TextArea from "antd/es/input/TextArea";
 
 function App() {
   const [formName, setFormName] = useState("Dyanamic Form");
@@ -79,7 +80,6 @@ function App() {
     const updatedForm = [...formData];
     const updatedOptions = [...updatedForm[index]?.options];
     console.log(updatedOptions, "updatedOptions");
-    // updatedOptions?.map((each) => (each.selected = value));
     const a = updatedOptions.find((each) => each.value === value);
     a.selected = true;
     setFormData(updatedForm);
@@ -94,7 +94,6 @@ function App() {
   console.log(formData, "formData");
 
   const handleCopyClick = (textToCopy) => {
-    // Create a new textarea element to hold the text temporarily
     const textarea = document.createElement("textarea");
     textarea.value = textToCopy;
 
@@ -117,41 +116,60 @@ function App() {
       >
         <div className="w-50">
           <Input
-            type="text"
+            type="search"
             value={formName}
             onChange={(e) => setFormName(e.target.value)}
           />
         </div>
       </div>
-      <div className="row w-100 th-container align-center">
-        <div className="w-100 m-5">
-          <h5> Selection options</h5>
-          <ApplicationFormOptions
-            setFormData={setFormData}
-            formData={formData}
-          />
-        </div>
-        <div className="col-md-10">
-          {formData?.length > 0 && (
-            <Preview
-              formData={formData}
+      <div className="row w-100 th-container align-center  my-2">
+        <div className="col-md-4" style={{ height: "100vh" }}>
+          <div className="">
+            <h5> Select options</h5>
+            <ApplicationFormOptions
               setFormData={setFormData}
-              handleInput={handleInput}
-              handleLabel={handleLabel}
-              addBox={addBox}
-              handleInputBox={handleInputBox}
-              handleSelectedCheckBox={handleSelectedCheckBox}
-              handleSelectedRadio={handleSelectedRadio}
-              handleDelete={handleDelete}
+              formData={formData}
             />
+          </div>
+          <div className="w-100 my-4">
+            <h5>If you alreay have JSON just paste it</h5>
+            <TextArea
+              showCount
+              placeholder="Paste it here..."
+              style={{
+                height: 120,
+                // resize: "none",
+              }}
+              onChange={(e) => {
+                setFormData(JSON.parse(e.target.value));
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="col-md-8">
+          {formData?.length > 0 && (
+            <>
+              <Preview
+                formData={formData}
+                setFormData={setFormData}
+                handleInput={handleInput}
+                handleLabel={handleLabel}
+                addBox={addBox}
+                handleInputBox={handleInputBox}
+                handleSelectedCheckBox={handleSelectedCheckBox}
+                handleSelectedRadio={handleSelectedRadio}
+                handleDelete={handleDelete}
+              />
+              <p className="p-0 m-0">{`${formData?.length} Count`}</p>
+            </>
           )}
+          <div className="d-flex w-75 justify-content-end my-2" style={{}}>
+            <Button onClick={() => setOpenModal(true)}>Start Filling</Button>
+          </div>
         </div>
       </div>
-      {formData?.length > 0 && (
-        <div className="d-flex w-75 my-2 justify-content-end" style={{}}>
-          <Button onClick={() => setOpenModal(true)}>View In Full Mode</Button>
-        </div>
-      )}
+
       <Modal
         open={openModal}
         title={formName}
@@ -231,7 +249,12 @@ function App() {
             ))}
           </div>
           <div>
-            <Button onClick={() => handleCopyClick(JSON.stringify(formData))}>
+            <Button
+              onClick={() => {
+                handleCopyClick(JSON.stringify(formData));
+                setOpenModal(false);
+              }}
+            >
               Copy Text
             </Button>
             {/* <p>{JSON.stringify(formData)}</p> */}

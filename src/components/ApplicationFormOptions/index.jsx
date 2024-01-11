@@ -2,7 +2,10 @@ import React from "react";
 import { Button, Input } from "antd";
 const ApplicationFormOptions = ({ setFormData, formData }) => {
   return (
-    <div className=" rounded p-3" style={{ border: "2px solid #92b6f0" }}>
+    <div
+      className="d-flex flex-column rounded py-5"
+      style={{ border: "1px solid #92b6f0" }}
+    >
       <Button
         onClick={() => {
           setFormData([
@@ -10,6 +13,7 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
             { name: "Name Field", type: "text", label: "Label Name" },
           ]);
         }}
+        className="m-2"
       >
         Add Text Input
       </Button>
@@ -21,7 +25,7 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
             { name: "Number Field", type: "number", label: "" },
           ]);
         }}
-        className="mx-5"
+        className="m-2"
       >
         Add Number Input
       </Button>
@@ -38,7 +42,7 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
             },
           ]);
         }}
-        className="mx-5"
+        className="m-2"
       >
         Add Checkbox
       </Button>
@@ -55,7 +59,7 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
             },
           ]);
         }}
-        className="mx-5"
+        className="m-2"
       >
         Add Radio
       </Button>
@@ -72,7 +76,7 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
             },
           ]);
         }}
-        className="mx-5"
+        className="m-2"
       >
         Add DropDwon
       </Button>
