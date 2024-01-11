@@ -6,7 +6,9 @@ import { Button, Input, Modal, Checkbox, Radio, Select } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 function App() {
-  const [formName, setFormName] = useState("Dyanamic Form");
+  const [formName, setFormName] = useState(
+    "Write your own dynamic form name..."
+  );
   const [formData, setFormData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
