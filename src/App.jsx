@@ -175,8 +175,25 @@ function App() {
                 handleSelectedRadio={handleSelectedRadio}
                 handleDelete={handleDelete}
               />
-              <div className="d-flex w-100 justify-content-between " style={{}}>
+              <div
+                className="d-flex w-100 justify-content-between my-1"
+                style={{}}
+              >
                 <p className="p-0 m-0">{`${formData?.length} Count`}</p>
+                <Tooltip
+                  title="You can copy this JSON of this form and paste it in future to generate this form once again.."
+                  trigger="hover"
+                >
+                  <Button
+                    onClick={() => {
+                      handleCopyClick(JSON.stringify(formData));
+                      setOpenModal(false);
+                    }}
+                  >
+                    Copy JSON
+                  </Button>
+                </Tooltip>
+                {/* <p>{JSON.stringify(formData)}</p> */}
                 <Button onClick={() => setOpenModal(true)}>
                   Start Filling
                 </Button>
@@ -263,22 +280,6 @@ function App() {
                 </div>
               </div>
             ))}
-          </div>
-          <div>
-            <Tooltip
-              title="You can copy this JSON of this form and paste it in future to generate this form once again.."
-              trigger="hover"
-            >
-              <Button
-                onClick={() => {
-                  handleCopyClick(JSON.stringify(formData));
-                  setOpenModal(false);
-                }}
-              >
-                Copy JSON
-              </Button>
-            </Tooltip>
-            {/* <p>{JSON.stringify(formData)}</p> */}
           </div>
         </div>
       </Modal>
