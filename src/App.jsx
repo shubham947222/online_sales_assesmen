@@ -15,9 +15,7 @@ import {
 import TextArea from "antd/es/input/TextArea";
 
 function App() {
-  const [formName, setFormName] = useState(
-    "Write your own dynamic form name..."
-  );
+  const [formName, setFormName] = useState();
   const [formData, setFormData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
@@ -128,6 +126,7 @@ function App() {
         <div className="w-50">
           <Input
             type="search"
+            placeholder="Write your own dynamic form name..."
             value={formName}
             onChange={(e) => setFormName(e.target.value)}
           />
