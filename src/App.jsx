@@ -216,8 +216,10 @@ function App() {
           </Button>,
         ]}
       >
-        <div className="">
-          <div className="">
+        <div className="row">
+          <div className="col-md-8">
+            <p>Input Fileds</p>
+
             {formData?.map((each, index) => (
               <div
                 className="d-flex flex-column my-1 p-2 border rounded"
@@ -277,6 +279,39 @@ function App() {
                       }}
                     />
                   )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="col-md-4">
+            <p>Response</p>
+            {formData?.map((each, index) => (
+              <div
+                className="d-flex flex-column my-1 p-2 border rounded"
+                key={index + each}
+                style={{ background: "#faf9f6" }}
+              >
+                <div className="d-flex flex-column align-items-start">
+                  <div className="w-50">
+                    <label>{each?.label}</label>
+                    <p>-- {each?.name}</p>
+                  </div>
+                  {["checkbox", "radio"]?.includes(each?.type) && (
+                    <>
+                      {each?.options?.map((item, ind) => (
+                        <div className="d-flex align-items-center">
+                          {each?.type == "checkbox" && item?.checked && (
+                            <p className="m-0 px-1">{item?.label}</p>
+                          )}
+                          {each?.type == "radio" && item?.selected && (
+                            <p className="m-0 px-1">{item?.label}</p>
+                          )}
+                        </div>
+                      ))}
+                    </>
+                  )}
+                  {each?.type == "select" &&
+                    each?.options?.filter((each) => each?.selected)[0]?.label}
                 </div>
               </div>
             ))}
