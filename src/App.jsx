@@ -25,7 +25,6 @@ function App() {
     setFormData(updatedForm);
   };
   const addBox = (index, type) => {
-    console.log(index, "indexsss");
     let updatedForm = [...formData];
     if (type == "checkbox") {
       updatedForm[index].options = [
@@ -48,9 +47,7 @@ function App() {
   const handleInputBox = (e, index, ind, type) => {
     const { name, value } = e.target;
 
-    console.log(index, "index from check", ind);
     const updatedForm = [...formData];
-    console.log(updatedForm[index]?.options, "ha bhai");
     const updatedOptions = [...updatedForm[index]?.options];
     updatedOptions[ind].label = value;
     if (type == "select") {
@@ -66,7 +63,6 @@ function App() {
   };
 
   const handleSelectedRadio = (e, index, ind) => {
-    console.log(e.target, "value");
     const { name, value } = e.target;
 
     const updatedForm = [...formData];
@@ -79,14 +75,12 @@ function App() {
   const handleDropdownChange = (value, index, ind) => {
     const updatedForm = [...formData];
     const updatedOptions = [...updatedForm[index]?.options];
-    console.log(updatedOptions, "updatedOptions");
     const a = updatedOptions.find((each) => each.value === value);
     a.selected = true;
     setFormData(updatedForm);
   };
 
   const handleDelete = (index) => {
-    console.log(index, "index");
     const updatedForm = [...formData];
     updatedForm.splice(index, 1);
     setFormData(updatedForm);
@@ -202,8 +196,14 @@ function App() {
         onOk={() => setOpenModal(false)}
         onCancel={() => setOpenModal(false)}
         footer={[
-          <Button key="back" onClick={() => setOpenModal(false)}>
-            Return
+          <Button
+            key="back"
+            onClick={() => {
+              setOpenModal(false);
+              alert("Form Submitted-->Check Console for Form Data");
+            }}
+          >
+            Click and check JSON response in console
           </Button>,
         ]}
       >

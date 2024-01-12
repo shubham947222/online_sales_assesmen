@@ -125,7 +125,6 @@ const Preview = ({
             <p
               onClick={() => {
                 handleDelete(index);
-                console.log("delete", index);
               }}
             >
               Delete {index + 1}
