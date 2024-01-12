@@ -127,7 +127,7 @@ function App() {
       <div className="row w-100 th-container align-center  my-2">
         <div
           className="col-md-4 rounded border"
-          style={{ height: "100vh", boxShadow: "1px 10px 5px lightgrey" }}
+          style={{ height: "95vh", boxShadow: "1px 10px 5px lightgrey" }}
         >
           <div className="">
             <h5> Select options</h5>
