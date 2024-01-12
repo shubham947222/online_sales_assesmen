@@ -2,7 +2,16 @@ import { useState } from "react";
 import "./App.css";
 import Preview from "./components/Preview";
 import ApplicationFormOptions from "./components/ApplicationFormOptions";
-import { Button, Input, Modal, Checkbox, Radio, Select } from "antd";
+import {
+  Button,
+  Input,
+  Modal,
+  Checkbox,
+  Radio,
+  Select,
+  Tooltip,
+  Card,
+} from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 function App() {
@@ -125,7 +134,10 @@ function App() {
         </div>
       </div>
       <div className="row w-100 th-container align-center  my-2">
-        <div className="col-md-4" style={{ height: "100vh" }}>
+        <div
+          className="col-md-4 rounded border"
+          style={{ height: "100vh", boxShadow: "1px 10px 5px lightgrey" }}
+        >
           <div className="">
             <h5> Select options</h5>
             <ApplicationFormOptions
@@ -253,14 +265,19 @@ function App() {
             ))}
           </div>
           <div>
-            <Button
-              onClick={() => {
-                handleCopyClick(JSON.stringify(formData));
-                setOpenModal(false);
-              }}
+            <Tooltip
+              title="You can copy this JSON of this form and paste it in future to generate this form once again.."
+              trigger="hover"
             >
-              Copy Text
-            </Button>
+              <Button
+                onClick={() => {
+                  handleCopyClick(JSON.stringify(formData));
+                  setOpenModal(false);
+                }}
+              >
+                Copy JSON
+              </Button>
+            </Tooltip>
             {/* <p>{JSON.stringify(formData)}</p> */}
           </div>
         </div>

@@ -15,7 +15,7 @@ const Preview = ({
   return (
     <div
       className="d-flex flex-column "
-      style={{ height: "600px", overflow: "scroll" }}
+      style={{ height: "550px", overflow: "scroll" }}
     >
       {formData?.map((each, index) => (
         <div
@@ -27,7 +27,7 @@ const Preview = ({
             <div className="w-50">
               <Input
                 name={each?.name}
-                placeholder="Label Name"
+                placeholder="Write Label Name..."
                 type="text"
                 value={each?.label}
                 onChange={(e) => handleLabel(e, index)}
@@ -40,7 +40,7 @@ const Preview = ({
                 disabled
                 name={each?.name}
                 type={each?.type}
-                placeholder="Enter Field Value"
+                placeholder={`Enter Field ${each?.type}`}
                 onChange={(e) => handleInput(e, index)}
                 size="medium"
                 className="w-100"
@@ -54,10 +54,12 @@ const Preview = ({
                       <Checkbox
                         checked={item?.checked}
                         onChange={(e) => handleSelectedCheckBox(e, index, ind)}
+                        disabled
                       />
                     )}
                     {each?.type == "radio" && (
                       <Radio
+                        disabled
                         checked={item?.selected}
                         value={item?.label}
                         name={item?.name}
@@ -75,14 +77,14 @@ const Preview = ({
                     {ind === each?.options?.length - 1 && (
                       <div className="d-flex w-100 justify-content-end">
                         <div
-                          className="rounded border p-1"
+                          className="rounded border p-1 bg-white th-pointer"
                           onClick={() => {
                             each?.type == "checkbox"
                               ? addBox(index, "checkbox")
                               : addBox(index, "radio");
                           }}
                         >
-                          Add +
+                          Add Choice +
                         </div>
                       </div>
                     )}
@@ -110,7 +112,7 @@ const Preview = ({
                             addBox(index, "select");
                           }}
                         >
-                          Add +
+                          Add Choice +
                         </div>
                       </div>
                     )}
@@ -126,7 +128,7 @@ const Preview = ({
                 console.log("delete", index);
               }}
             >
-              Delete
+              Delete {index + 1}
             </p>
           </div>
         </div>

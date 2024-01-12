@@ -4,13 +4,16 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
   return (
     <div
       className="d-flex flex-column rounded py-5"
-      style={{ border: "1px solid #92b6f0" }}
+      style={{
+        // border: "1px solid #92b6f0",
+        boxShadow: "1px 1px 5px lightgray",
+      }}
     >
       <Button
         onClick={() => {
           setFormData([
             ...formData,
-            { name: "Name Field", type: "text", label: "Label Name" },
+            { name: "Name Field", type: "text", label: "Write Label Name..." },
           ]);
         }}
         className="m-2"
@@ -78,7 +81,7 @@ const ApplicationFormOptions = ({ setFormData, formData }) => {
         }}
         className="m-2"
       >
-        Add DropDwon
+        Add DropDown
       </Button>
     </div>
   );
