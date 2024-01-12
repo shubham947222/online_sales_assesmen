@@ -2,16 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Preview from "./components/Preview";
 import ApplicationFormOptions from "./components/ApplicationFormOptions";
-import {
-  Button,
-  Input,
-  Modal,
-  Checkbox,
-  Radio,
-  Select,
-  Tooltip,
-  Card,
-} from "antd";
+import { Button, Input, Modal, Checkbox, Radio, Select, Tooltip } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 function App() {
@@ -123,6 +114,7 @@ function App() {
         className="d-flex w-100 justify-content-center align-items-center"
         style={{ height: "50px", background: "#c2d6f6" }}
       >
+        <h4 className="mx-3">Dynamic Form</h4>
         <div className="w-50">
           <Input
             type="search"
